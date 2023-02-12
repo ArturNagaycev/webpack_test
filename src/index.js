@@ -1,8 +1,8 @@
-const sum = require('./sum');
-const { numbers, uniqueNumbers } = require('./uniq');
+import sum from './sum.js';
+import { numbers, uniqueNumbers } from './uniq.js';
 
 const a = 5;
-const b = 5;
+const b = 7;
 const result = sum(a, b);
 
 console.log(`Result of sum function: ${a} + ${b} = ${result}`);
