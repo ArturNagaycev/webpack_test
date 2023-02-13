@@ -36,6 +36,7 @@ const config = {
         },
       }),
     ],
+    runtimeChunk: 'single',
   },
   mode: 'production',
 };
