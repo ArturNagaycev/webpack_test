@@ -6,17 +6,13 @@ import TerserPlugin from 'terser-webpack-plugin';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const VENDOR_LIBS = ['lodash', 'moment'];
+// const VENDOR_LIBS = ['lodash', 'moment'];
 
 const config = {
   entry: {
-    main: {
-      import: './src/index.js',
-    },
-    time: {
-      import: './src/time.js',
-    },
-    shared: VENDOR_LIBS
+    main: './src/index.js',
+    time: './src/time.js',
+    // shared: VENDOR_LIBS
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -48,6 +44,15 @@ const config = {
       }),
     ],
     runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        reactVendor: {
+          test: /[\\/]node_modules[\\/](lodash|moment)[\\/]/,
+          name: 'shared',
+          chunks: 'all',
+        },
+      },
+    }
   },
   mode: 'production',
 };
