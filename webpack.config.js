@@ -6,13 +6,17 @@ import TerserPlugin from 'terser-webpack-plugin';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const VENDOR_LIBS = ['lodash', 'moment'];
+
 const config = {
   entry: {
     main: {
       import: './src/index.js',
-      dependOn: 'lodash'
     },
-    lodash: 'lodash'
+    time: {
+      import: './src/time.js',
+    },
+    shared: VENDOR_LIBS
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -21,7 +25,14 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
+      filename: 'index.html',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      template: './time.html',
+      filename: 'time.html',
+      chunks: ['time']
     })
   ],
   optimization: {
