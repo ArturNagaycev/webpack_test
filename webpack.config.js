@@ -8,12 +8,15 @@ const __dirname = path.dirname(__filename);
 
 const config = {
   entry: {
-    index: './src/index.js',
-    lodash: './src/lodash.js'
+    main: {
+      import: './src/index.js',
+      dependOn: 'lodash'
+    },
+    lodash: 'lodash'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     clean: true
   },
   plugins: [
