@@ -2,7 +2,7 @@ import sum from './sum.js';
 import { numbers, uniqueNumbers } from './uniq.js';
 
 const a = 10;
-const b = 8;
+const b = 11;
 const result = sum(a, b);
 
 const someData = document.createElement('p');
