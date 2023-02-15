@@ -1,0 +1,38 @@
+@import '../../styles/vars';
+@import '../../styles/extends';
+
+.page{
+  &_time {
+    background-color: $c-red;
+  }
+
+  &__header {
+    &_time {
+      background-color: $c-pink-dark;
+      border-bottom-color: $c-green-dark;
+    }
+  }
+
+  &__link {
+    &_time {
+      border-color: $c-green-dark;
+      color: $c-green-dark;
+    
+      &:hover {
+        border-color: $c-green-light;
+        color: $c-green-light;
+      }
+    }
+  }
+
+  &__title {
+    &_time {
+      color: $c-green-light;
+    }
+  }
+}
+
+.time {
+  @extend %content;
+  color: $c-green-dark;
+}

@@ -1,0 +1,30 @@
+@import './reset';
+@import './vars';
+
+.page {
+  font-family: Arial, Helvetica, sans-serif;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+  }
+
+  &__link {
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__title {
+    padding: 20px;
+    font-size: 28px;
+    text-align: center;
+  }
+}

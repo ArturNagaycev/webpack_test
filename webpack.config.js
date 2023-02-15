@@ -2,14 +2,15 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const config = {
   entry: {
-    main: './src/index.js',
-    time: './src/time.js',
+    main: './src/components/Index/index.js',
+    time: './src/components/Time/time.js',
   },
 
   output: {
@@ -18,19 +19,19 @@ const config = {
     clean: true
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './index.html',
-      filename: 'index.html',
-      chunks: ['main']
-    }),
-    
-    new HtmlWebpackPlugin({
-      template: './time.html',
-      filename: 'time.html',
-      chunks: ['time']
-    })
-  ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ],
+      },
+    ],
+  },
 
   optimization: {
     minimize: true,
@@ -58,6 +59,24 @@ const config = {
       },
     }
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/pages/index.html',
+      filename: 'index.html',
+      chunks: ['main']
+    }),
+    
+    new HtmlWebpackPlugin({
+      template: './src/pages/time.html',
+      filename: 'time.html',
+      chunks: ['time']
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: "[name]/style.[contenthash].css",
+    }),
+  ],
 };
 
 export default config;
