@@ -8,9 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const config = {
+  context: path.resolve(__dirname, 'src', 'components'),
+
   entry: {
-    main: './src/components/Index/index.js',
-    time: './src/components/Time/time.js',
+    main: './Index',
+    time: './Time',
   },
 
   output: {
@@ -62,13 +64,13 @@ const config = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/pages/index.html',
+      template: path.resolve(__dirname, 'src', 'pages', 'index.html'),
       filename: 'index.html',
       chunks: ['main']
     }),
     
     new HtmlWebpackPlugin({
-      template: './src/pages/time.html',
+      template: path.resolve(__dirname, 'src', 'pages', 'time.html'),
       filename: 'time.html',
       chunks: ['time']
     }),
