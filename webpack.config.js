@@ -1,14 +1,10 @@
 import path from 'path';
-import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 const config = {
-  context: path.resolve(__dirname, 'src', 'components'),
+  context: path.resolve('src', 'components'),
 
   entry: {
     main: './Index',
@@ -16,7 +12,7 @@ const config = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve('dist'),
     filename: '[name].[contenthash].js',
     clean: true
   },
@@ -64,13 +60,13 @@ const config = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'pages', 'index.html'),
+      template: path.resolve('src', 'pages', 'index.html'),
       filename: 'index.html',
       chunks: ['main']
     }),
     
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'pages', 'time.html'),
+      template: path.resolve('src', 'pages', 'time.html'),
       filename: 'time.html',
       chunks: ['time']
     }),
